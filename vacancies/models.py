@@ -7,9 +7,8 @@ class Skill(models.Model):
     is_active = models.BooleanField(default=True)
 
     class Meta:
-        verbose_name = "Навык"
-        verbose_name_plural = "Навыки"
-
+        verbose_name = "Навык"          # Для написания по-русски в админке в ед.числе
+        verbose_name_plural = "Навыки"  # Для написания по-русски в админке в мн.числе
 
     def __str__(self):
         return self.name
@@ -29,8 +28,11 @@ class Vacancy(models.Model):
     skills = models.ManyToManyField(Skill)
 
     class Meta:
-        verbose_name = "Вакансия"
-        verbose_name_plural = "Вакансии"
+        verbose_name = "Вакансия"          # Для написания по-русски в админке в ед.числе
+        verbose_name_plural = "Вакансии"   # Для написания по-русски в админке в мн.числе
 
     def __str__(self):
         return self.slug
+    @property
+    def username(self):
+        return self.user.username if self.user else None
