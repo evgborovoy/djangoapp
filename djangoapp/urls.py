@@ -17,8 +17,13 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
 
 from djangoapp import settings
+from vacancies.views import SkillViewSet
+
+router = routers.SimpleRouter()
+router.register('skill', SkillViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,5 +32,6 @@ urlpatterns = [
     path("company/", include("companies.urls")),
 
 ]
+urlpatterns += router.urls
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

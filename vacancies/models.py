@@ -27,6 +27,8 @@ class Vacancy(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     skills = models.ManyToManyField(Skill)
 
+    likes = models.IntegerField(default=0)
+
     class Meta:
         verbose_name = "Вакансия"          # Для написания по-русски в админке в ед.числе
         verbose_name_plural = "Вакансии"   # Для написания по-русски в админке в мн.числе
