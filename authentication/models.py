@@ -8,4 +8,9 @@ class User(AbstractUser):
     FEMALE = "f"
     SEX = [(MALE, "Male"), (FEMALE, "FEMALE")]
 
+    HR = "hr"
+    SEEKER = "seeker"
+    UNKNOWN = "unknown"
+    ROLE = [(HR, HR), (SEEKER, SEEKER), (UNKNOWN, UNKNOWN)]
     sex = models.CharField(max_length=1, choices=SEX, default=MALE)
+    role = models.CharField(max_length=7, default=UNKNOWN)

@@ -1,5 +1,5 @@
 .DS_Store
 .idea/
 authentication/__pycache__/
-
-
+vacancies/__pycache__/
+authentication/migrations/__pycache__/
