@@ -1,8 +1,15 @@
+from datetime import date
 
+from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator
 from django.db import models
 
 from authentication.models import User
 
+
+def updated_date(value):
+    if value < date.today():
+        raise ValidationError(f"date {value} in the past")
 
 class Skill(models.Model):
     name = models.CharField(max_length=20)
@@ -30,6 +37,8 @@ class Vacancy(models.Model):
     skills = models.ManyToManyField(Skill)
 
     likes = models.IntegerField(default=0)
+    min_experience = models.IntegerField(null=True, validators=([MinValueValidator(0)]))
+    updated_at = models.DateField(null=True, validators=[updated_date])
 
     class Meta:
         verbose_name = "Вакансия"          # Для написания по-русски в админке в ед.числе

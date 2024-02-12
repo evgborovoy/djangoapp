@@ -3,3 +3,5 @@
 authentication/__pycache__/
 vacancies/__pycache__/
 authentication/migrations/__pycache__/
+tests/__pycache__/
+tests/vacancies/__pycache__/
